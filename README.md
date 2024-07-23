@@ -1,4 +1,4 @@
-Wellcome to my personal page
+Welcome to my personal page
 
 
 ## Teaching
