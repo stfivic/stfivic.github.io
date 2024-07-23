@@ -1,51 +1,96 @@
-# Academic Pages
+[![buymeacoffee](https://img.shields.io/badge/Buy%20me%20a%20coffee-dumindu-FFDD00?style=for-the-badge&logo=buymeacoffee&logoColor=ffffff&labelColor=333333)](https://www.buymeacoffee.com/dumindu)
 
-![pages-build-deployment](https://github.com/academicpages/academicpages.github.io/actions/workflows/pages/pages-build-deployment/badge.svg)
+# 🦄 E25DX
 
-Academic Pages is a Github Pages template for academic websites.
+Your next documentation theme...
 
-# Getting Started
+https://github.com/dumindu/E25DX/assets/1280428/00935567-6d50-4e1b-bb0c-cbd159ad37f0
 
-1. Register a GitHub account if you don't have one and confirm your e-mail (required!)
-1. Click the "Use this template" button in the top right.
-1. On the "New repository" page, enter your repository name as "[your GitHub username].github.io", which will also be your website's URL.
-1. Set site-wide configuration and add your content.
-1. Upload any files (like PDFs, .zip files, etc.) to the `files/` directory. They will appear at https://[your GitHub username].github.io/files/example.pdf.
-1. Check status by going to the repository settings, in the "GitHub pages" section
-1. (Optional) Use the Jupyter notebooks or python scripts in the `markdown_generator` folder to generate markdown files for publications and talks from a TSV file.
+## 🌱 Inspiration
 
-See more info at https://academicpages.github.io/
+- Build a simple, modular but customizable technical documentation.
+- Build the website without using node/npm or any external frameworks(CSS, JS, icon, font).
+- Demo
+  - [![learning-rust.github.io](https://img.shields.io/github/stars/learning-rust/learning-rust.github.io?style=for-the-badge&logo=rust&label=learning-rust.github.io&labelColor=333333&color=F46623)](https://learning-rust.github.io)
+  - [![learning-cloud-native-go.github.io](https://img.shields.io/github/stars/learning-cloud-native-go/learning-cloud-native-go.github.io?style=for-the-badge&logo=go&logoColor=ffffff&label=learning-cloud-native-go.github.io&labelColor=333333&color=00ADD8)](https://learning-cloud-native-go.github.io)
 
-## Running Locally
+## ✅ Features
 
-When you are initially working your website, it is very useful to be able to preview the changes locally before pushing them to GitHub. To work locally you will need to:
+- [x] Responsive and adaptive layouts.
+- [x] Built-in light and dark modes.
+- [x] Customizable sidebars using Hugo data templates.
+- [ ] Support for multiple documentation sets.
+- [ ] Implement a menu via Hugo configs.
+- [ ] Integrate search or AI assistant.
 
-1. Clone the repository and made updates as detailed above.
-1. Make sure you have ruby-dev, bundler, and nodejs installed
-    
-    On most Linux distribution and [Windows Subsystem Linux](https://learn.microsoft.com/en-us/windows/wsl/about) the command is:
-    ```bash
-    sudo apt install ruby-dev ruby-bundler nodejs
-    ```
-    On MacOS the commands are:
-    ```bash
-    brew install ruby
-    brew install node
-    gem install bundler
-    ```
-1. Run `bundle install` to install ruby dependencies. If you get errors, delete Gemfile.lock and try again.
-1. Run `jekyll serve -l -H localhost` to generate the HTML and serve it from `localhost:4000` the local server will automatically rebuild and refresh the pages on change.
+## 🚀 Getting Started
 
-If you are running on Linux it may be necessary to install some additional dependencies prior to being able to run locally: `sudo apt install build-essential gcc make`
+1. [Install Hugo](https://gohugo.io/installation/).
+    - Use prebuilt binaries via https://github.com/gohugoio/hugo/releases/latest
+    - Verify the installation via `hugo version`
 
-# Maintenance
+2. Create a new Hugo site with the E25DX theme.
+    1. Foundation
+        ```shell
+        hugo new site newsite
+        cd newsite
+       
+        git init
+        git submodule add https://github.com/dumindu/E25DX.git themes/E25DX
+       
+        rm hugo.toml && cp themes/E25DX/hugo.yaml .
+        cp themes/E25DX/static/sw.js ./static/
+        cp themes/E25DX/static/manifest.json ./static/
+        ```
+       > 💡 We don't need generated `archetypes`, `assets`, `i18n`, `layouts` folders in the `newsite` folder
 
-Bug reports and feature requests to the template should be [submitted via GitHub](https://github.com/academicpages/academicpages.github.io/issues/new/choose). For questions concerning how to style the template, please feel free to start a [new discussion on GitHub](https://github.com/academicpages/academicpages.github.io/discussions).
+   2. Configuration 
+      - `newsite/hugo.yaml`
+        - languages: en:title and en:description
+        - params: project, author and home
+      - `newsite/static/sw.js`
+        - cacheName prefix: ex. todo-
+      - `newsite/static/manifest.json`
+        - name, short_name, description
+   
+   3. Sample content and sidebar
+      - add `newsite/content/en/docs/_overview.md` for overview
+        ```markdown
+        ---
+        title: Overview
+        url: "docs/overview"
+        aliases:
+        - "/docs"
+        ---
+        ```
+      - add `newsite/content/en/docs/a1.hello-world.md` as the first page of first section
+        ```markdown
+        ---
+        title: Hello World
+        slug: hello-world
+        ---
+        ```
+      - add `newsite/content/en/docs/b1.modules.md` as the first page of second section
+        ```markdown
+        ---
+        title: Modules
+        slug: modules
+        ---
+        ```
+      - add `newsite/data/en/docs/sidebar.yml` for section titles and page titles
+        ```markdown
+        - title: Documentation
+          pages:
+            - title: Overview
 
-This repository was forked (then detached) by [Stuart Geiger](https://github.com/staeiou) from the [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/), which is © 2016 Michael Rose and released under the MIT License (see LICENSE.md). It is currently being maintained by [Robert Zupko](https://github.com/rjzupkoii) and additional maintainers would be welcomed.
+        - title: Basics
+          pages:
+            - title: Hello World
 
-## Bugfixes and enhancements
-
-If you have bugfixes and enhancements that you would like to submit as a pull request, you will need to [fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) this repository as opposed to using it as a template. This will also allow you to [synchronize your copy](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork) of template to your fork as well.
-
-Unfortunately, one logistical issue with a template theme like Academic Pages that makes it a little tricky to get bug fixes and updates to the core theme. If you use this template and customize it, you will probably get merge conflicts if you attempt to synchronize. If you want to save your various .yml configuration files and markdown files, you can delete the repository and fork it again. Or you can manually patch.
+        - title: Beyond The Basics
+          pages:
+            - title: Modules
+        ```
+      
+   4. Run `hugo server`
+      > 💡 Change `newsite/hugo.yaml` -> `enableGitInfo: false`, if you want to run `hugo server` before commit the changes.
